@@ -143,7 +143,7 @@ logConn = LogService.MessageOut:Connect(function(message, type)
     end
 end)
 
-local url = "hellonotyetmyboy"
+local url = "https://raw.githubusercontent.com/unkn0wnidentities/SKRV2/refs/heads/main/ther3aldiction4ry.txt"
 local fileName = "ultimate_words_v4.txt"
 
 -- Temporary Loading UI
