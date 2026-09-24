@@ -162138,6 +162138,7 @@ goyana
 goyazite
 goyazites
 goyetian
+goyim
 goyin
 goyish
 goyle
@@ -206601,6 +206602,7 @@ juxtavascular
 juyas
 juza
 juzen-taiho-to
+juzu
 jwahar
 jymold
 jynginae
@@ -249997,6 +249999,8 @@ mscarlets
 msec
 msemen
 msemens
+msemmen
+msemmens
 msg
 msink
 msource
@@ -260305,6 +260309,7 @@ noclipped
 noclipper
 noclipping
 noclips
+nocodazole
 noconfirm
 noctambulant
 noctambulate
@@ -413872,6 +413877,7 @@ tanukis
 tanwood
 tanworks
 tanya
+tanyao
 tanyard
 tanyards
 tanycolagreus
@@ -415879,6 +415885,7 @@ teco
 tecoma
 tecomin
 tecon
+tecovirimat
 tecpanec
 tecpatl
 tecpatls
@@ -481014,6 +481021,7 @@ yojijukugo
 yojuane
 yok
 yokage
+yokai
 yoke
 yokeable
 yokeableness
