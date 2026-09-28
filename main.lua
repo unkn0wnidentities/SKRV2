@@ -555,6 +555,8 @@ CloseBtn.MouseButton1Click:Connect(function()
     if runConn then runConn:Disconnect() runConn = nil end
     if inputConn then inputConn:Disconnect() inputConn = nil end
     if logConn then logConn:Disconnect() logConn = nil end
+    if trackedGameTextConn then trackedGameTextConn:Disconnect() trackedGameTextConn = nil end
+    trackedGameTextBox = nil
     
     for _, btn in ipairs(ButtonCache) do btn:Destroy() end
     table.clear(ButtonCache)
@@ -2537,6 +2539,28 @@ end)
 local lastTypeVisible = false
 local lastRequiredLetter = ""
 
+-- Track every change to the real game textbox immediately. This catches
+-- manual/self-solved words even when the game clears the textbox right after
+-- Enter is pressed, before the RenderStepped loop can see the final text.
+local trackedGameTextBox = nil
+local trackedGameTextConn = nil
+
+local function TrackGameTextBox(box)
+    if trackedGameTextBox == box and trackedGameTextConn then return end
+    if trackedGameTextConn then trackedGameTextConn:Disconnect() trackedGameTextConn = nil end
+    trackedGameTextBox = box
+    if box and box:IsA("TextBox") then
+        trackedGameTextConn = box:GetPropertyChangedSignal("Text"):Connect(function()
+            if unloaded then return end
+            local typedWord = box.Text
+            typedWord = typedWord and typedWord:lower():gsub("[%s%c]+", "") or ""
+            if typedWord ~= "" and IsDictionaryWord(typedWord) and not UsedWords[typedWord] then
+                MarkWordUsed(typedWord)
+            end
+        end)
+    end
+end
+
 local StatsData = {}
 
 do
@@ -2623,13 +2647,9 @@ runConn = RunService.RenderStepped:Connect(function()
             lastWordCheck = now
         end
         local detected, censored = cachedDetected, cachedCensored
-
-        -- Track words typed directly by the player. GetGameTextBox() is
-        -- restricted to the actual InGame UI, so this does not watch the
-        -- helper's SearchBox or other settings fields. As soon as the
-        -- textbox contains a complete dictionary word, temporarily consume
-        -- that word for this practice game.
+                
         local gameTextBox = GetGameTextBox()
+        TrackGameTextBox(gameTextBox)
         if gameTextBox and gameTextBox.TextEditable then
             local typedWord = gameTextBox.Text
             typedWord = typedWord and typedWord:lower():gsub("[%s%c]+", "") or ""
