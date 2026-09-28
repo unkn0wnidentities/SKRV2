@@ -1866,6 +1866,24 @@ local function GetGameTextBox()
     return UserInputService:GetFocusedTextBox()
 end
 
+local function MarkWordUsed(word)
+    if not word or word == "" then return end
+
+    word = word:lower()
+    UsedWords[word] = true
+
+    -- Remove it from any cached random-order lists too.
+    for _, list in pairs(RandomOrderCache) do
+        for i = #list, 1, -1 do
+            if list[i] == word then
+                table.remove(list, i)
+            end
+        end
+    end
+
+    RandomPriority[word] = nil
+end
+
 local function SmartType(targetWord, currentDetected, isCorrection, bypassTurn)
     if unloaded then return end
     
@@ -1990,7 +2008,7 @@ local function SmartType(targetWord, currentDetected, isCorrection, bypassTurn)
                     Backspace(#current)
                 end
 
-                UsedWords[targetWord] = true
+                MarkWordUsed(targetWord)
                 isMyTurnLogDetected = false
                 task.wait(0.2)
             end
@@ -2126,7 +2144,7 @@ local function SmartType(targetWord, currentDetected, isCorrection, bypassTurn)
                     Backspace(#current)
                 end
 
-                UsedWords[targetWord] = true
+                MarkWordUsed(targetWord)
                 isMyTurnLogDetected = false
                 task.wait(0.2)
             end
