@@ -1869,10 +1869,12 @@ end
 local function MarkWordUsed(word)
     if not word or word == "" then return end
 
-    word = word:lower()
+    word = word:lower():gsub("[%s%c]+", "")
+    if word == "" then return end
+
     UsedWords[word] = true
 
-    -- Remove it from any cached random-order lists too.
+    -- Remove it from every cached list immediately.
     for _, list in pairs(RandomOrderCache) do
         for i = #list, 1, -1 do
             if list[i] == word then
@@ -1882,6 +1884,24 @@ local function MarkWordUsed(word)
     end
 
     RandomPriority[word] = nil
+    forceUpdateList = true
+end
+
+-- Checks the actual dictionary so normal GUI text/search fields cannot
+-- accidentally consume a word.
+local function IsDictionaryWord(word)
+    if not word or word == "" then return false end
+    word = word:lower():gsub("[%s%c]+", "")
+    local first = word:sub(1, 1)
+    local bucket = Buckets and Buckets[first]
+    if not bucket then return false end
+
+    for _, w in ipairs(bucket) do
+        if w == word then
+            return true
+        end
+    end
+    return false
 end
 
 local function SmartType(targetWord, currentDetected, isCorrection, bypassTurn)
@@ -2603,6 +2623,20 @@ runConn = RunService.RenderStepped:Connect(function()
             lastWordCheck = now
         end
         local detected, censored = cachedDetected, cachedCensored
+
+        -- Track words typed directly by the player. GetGameTextBox() is
+        -- restricted to the actual InGame UI, so this does not watch the
+        -- helper's SearchBox or other settings fields. As soon as the
+        -- textbox contains a complete dictionary word, temporarily consume
+        -- that word for this practice game.
+        local gameTextBox = GetGameTextBox()
+        if gameTextBox and gameTextBox.TextEditable then
+            local typedWord = gameTextBox.Text
+            typedWord = typedWord and typedWord:lower():gsub("[%s%c]+", "") or ""
+            if #typedWord > 0 and IsDictionaryWord(typedWord) and not UsedWords[typedWord] then
+                MarkWordUsed(typedWord)
+            end
+        end
 
         if isVisible and isMyTurn and not isTyping and seconds and seconds < 1.5 then
             local char = (requiredLetter or ""):lower()
