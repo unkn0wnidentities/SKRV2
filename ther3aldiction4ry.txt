@@ -139,6 +139,7 @@ abalone
 abalones
 abaloparatide
 abama
+abamectin
 abamp
 abampere
 abamperes
@@ -11415,6 +11416,7 @@ ambrosiate
 ambrosin
 ambrotype
 ambrotypes
+ambroxol
 ambry
 ambsace
 ambsaces
@@ -12851,6 +12853,7 @@ anagenesis
 anagenetic
 anagens
 anagignoskomena
+anagliptin
 anaglyph
 anaglyphic
 anaglyphical
@@ -18820,6 +18823,7 @@ apicillary
 apicitis
 apickaback
 apicoectomy
+apicolateral
 apicolysis
 apicular
 apiculate
@@ -18841,6 +18845,7 @@ apiin
 apikores
 apikoros
 apikorsim
+apilimod
 apimania
 apimanias
 apina
@@ -29992,6 +29997,7 @@ baloskionaceae
 balotade
 balourdise
 balow
+baloxavir
 balr
 balright
 bals
@@ -35082,6 +35088,7 @@ belarussians
 belash
 belast
 belat
+belatacept
 belate
 belated
 belatedly
@@ -37466,6 +37473,7 @@ betrimmed
 betrimming
 betrims
 betrinket
+betrixaban
 betrod
 betrodden
 betroth
@@ -85916,6 +85924,9 @@ counterturn
 counterturned
 countertype
 countertypes
+counterurbanisation
+counterurbanisations
+counterurbanization
 countervail
 countervailable
 countervailed
@@ -89431,6 +89442,7 @@ crouth
 crouton
 croutons
 crouts
+crovalimab
 crow
 crow's-feet
 crow's-foot
@@ -93944,6 +93956,7 @@ dabblings
 dabby
 dabchick
 dabchicks
+dabigatran
 dabih
 dabitis
 dablet
@@ -94973,6 +94986,7 @@ dannie
 dannies
 dannock
 danny
+danofloxacin
 danoranja
 dans
 dansak
@@ -101578,6 +101592,13 @@ deny
 denyer
 denying
 denyingly
+deobfuscate
+deobfuscates
+deobfuscating
+deobfuscation
+deobfuscations
+deobfuscator
+deobfuscators
 deobstruct
 deobstruent
 deobstruents
@@ -104289,6 +104310,10 @@ deuddarns
 deul
 deunam
 deuniting
+deurbanisation
+deurbanisations
+deurbanization
+deurbanizations
 deurbanize
 deurmekaar
 deurwaarder
@@ -107465,6 +107490,7 @@ dilong
 dilophosaurus
 dilophosauruses
 dilos
+diloxanide
 dilscoop
 dilscoops
 diltiazem
@@ -113176,6 +113202,7 @@ djurleites
 dlc
 dlcs
 dlr
+dluwang
 dlvy
 dm
 dming
@@ -114834,6 +114861,7 @@ dorado
 dorados
 dorads
 doralium
+doramectin
 doraphobia
 dorask
 doraskean
@@ -121879,6 +121907,7 @@ effigurations
 effigy
 effing
 effings
+efgartigimod
 efflagitate
 efflate
 efflation
@@ -131127,6 +131156,7 @@ eppes
 eppie
 eppy
 epratuzumab
+eprinomectin
 epris
 eprise
 eproboscidea
@@ -155303,6 +155333,7 @@ gajos
 gak
 gaks
 gal
+gal-o
 gala
 galabea
 galabeah
@@ -158434,6 +158465,7 @@ gemfibrozil
 gemfibrozils
 gemfish
 gemfishes
+gemigliptin
 geminal
 geminally
 geminate
@@ -168845,6 +168877,7 @@ gulsach
 gult
 guly
 gum
+gumatj
 gumball
 gumballs
 gumbe
@@ -169918,6 +169951,8 @@ gyrfalcon
 gyrfalcons
 gyri
 gyric
+gyrification
+gyrifications
 gyring
 gyrinid
 gyrinidae
@@ -174052,6 +174087,7 @@ hcf
 hcl
 hconvert
 hdbk
+hdi
 hdkf
 hdlc
 hdqrs
@@ -189641,6 +189677,7 @@ ideationally
 ideations
 ideative
 ideatum
+idebenone
 idee
 ideefixe
 idees
@@ -195434,6 +195471,7 @@ indow
 indowed
 indowing
 indows
+indoximod
 indoxyl
 indoxylic
 indoxyls
@@ -199858,6 +199896,7 @@ interdigitates
 interdigitating
 interdigitation
 interdigitations
+interdimensional
 interdine
 interdined
 interdines
@@ -210288,6 +210327,10 @@ kangas
 kangayam
 kangha
 kanghas
+kangkong
+kangkongs
+kangkung
+kangkungs
 kangla
 kangli
 kangri
@@ -212227,6 +212270,7 @@ khoas
 khodja
 khodjas
 khoekhoe
+khoekhoegowab
 khoikhoi
 khoikhoin
 khoisan
@@ -213175,6 +213219,7 @@ kintsugi
 kintsukoroi
 kintyre
 kinura
+kinyarwanda
 kinzigite
 kinzigites
 kioea
@@ -218306,6 +218351,7 @@ laquearia
 laquearian
 laquei
 laqueus
+laquinimod
 laquintasaura
 lar
 laralia
@@ -228541,6 +228587,7 @@ luscious
 lusciously
 lusciousness
 lusciousnesses
+luseogliflozin
 luser
 lusers
 lush
@@ -233852,6 +233899,7 @@ marbling
 marblings
 marblish
 marbly
+marbofloxacin
 marbrinus
 marc
 marcan
@@ -263093,10 +263141,13 @@ njahi
 njanja
 njave
 njem
+nkami
 nkanu
 nkatenkwan
 nko
 nkole
+nkongho
+nkonya
 nkore
 nkoro
 nkosi
@@ -263110,6 +263161,7 @@ nkrumaism
 nkrumaisms
 nkrumaist
 nkrumaists
+nkutu
 nkwen
 nkwobi
 nlaka'pamux
@@ -277358,6 +277410,7 @@ oleaginous
 oleaginously
 oleaginousness
 oleaginousnesses
+oleamide
 oleana
 oleander
 oleanders
@@ -277823,6 +277876,7 @@ omani
 omanis
 omao
 omar
+omarigliptin
 omarthritis
 omas
 omasa
@@ -309298,6 +309352,7 @@ pidgized
 pidgizing
 pidilizumab
 pidjajap
+
 pie
 pie-in-the-sky
 piebald
@@ -347120,6 +347175,9 @@ refaces
 refacilitate
 refacing
 refaction
+refactor
+refactoring
+refactors
 refait
 refall
 refallen
@@ -350782,6 +350840,7 @@ renshen
 rensselaerite
 rensselaerites
 rent
+rent-free
 rentabilities
 rentability
 rentable
@@ -352981,6 +353040,7 @@ resipiscences
 resipiscencies
 resipiscency
 resipiscent
+resiquimod
 resist
 resistability
 resistable
@@ -357877,6 +357937,7 @@ risankizumab
 risberm
 risdaler
 rise
+risedronate
 risen
 riser
 risers
@@ -372078,6 +372139,7 @@ selagite
 selago
 selah
 selahs
+selamectin
 selamin
 selamlik
 selamliks
@@ -383022,6 +383084,7 @@ sipid
 sipidity
 siping
 sipling
+siponimod
 sippable
 sipped
 sipper
@@ -417699,6 +417762,7 @@ tasmanian
 tasmanians
 tasmanite
 tasmanites
+tasquinimod
 tass
 tassa
 tassago
@@ -420445,6 +420509,7 @@ tenebrously
 tenebrousness
 tenebrousnesses
 tenectomy
+teneligliptin
 tenement
 tenemental
 tenementary
@@ -427499,6 +427564,7 @@ tirupati
 tirurai
 tirve
 tirwit
+tirzepatide
 tis
 tisagenlecleucel
 tisane
@@ -466431,6 +466497,7 @@ vamoose
 vamoosed
 vamooses
 vamoosing
+vamorolone
 vamos
 vamose
 vamosed
@@ -469777,6 +469844,7 @@ vicomtesse
 vicomtesses
 vicontiel
 vicontiels
+vicriviroc
 victal
 victim
 victimhood
@@ -470135,6 +470203,7 @@ vilanterol
 vilayet
 vilayets
 vild
+vildagliptin
 vilde
 vildly
 vildness
@@ -473988,8 +474057,11 @@ waragi
 waragis
 warangal
 warantee
+warao
 waratah
 waratahs
+waray
+waray-waray
 warb
 warbier
 warbiest
@@ -485088,6 +485160,8 @@ zentai
 zentais
 zentner
 zenu
+zenzic
+zenzics
 zenzuic
 zeoidei
 zeolite
