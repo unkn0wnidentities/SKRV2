@@ -1868,6 +1868,31 @@ local function GetGameTextBox()
     return UserInputService:GetFocusedTextBox()
 end
 
+-- Tracking must ONLY use a TextBox inside the actual game's InGame UI.
+-- Never fall back to the currently focused box, because that may be our
+-- helper's SearchBox.
+local function GetActualGameTextBox()
+    local player = Players.LocalPlayer
+    local gui = player and player:FindFirstChild("PlayerGui")
+    local inGame = gui and gui:FindFirstChild("InGame")
+    if not inGame then return nil end
+
+    local frame = inGame:FindFirstChild("Frame")
+    if frame then
+        for _, c in ipairs(frame:GetDescendants()) do
+            if c:IsA("TextBox") and c.Visible and c.TextEditable then
+                return c
+            end
+        end
+    end
+    for _, c in ipairs(inGame:GetDescendants()) do
+        if c:IsA("TextBox") and c.Visible and c.TextEditable then
+            return c
+        end
+    end
+    return nil
+end
+
 local function MarkWordUsed(word)
     if not word or word == "" then return end
 
@@ -2539,25 +2564,40 @@ end)
 local lastTypeVisible = false
 local lastRequiredLetter = ""
 
--- Track every change to the real game textbox immediately. This catches
--- manual/self-solved words even when the game clears the textbox right after
--- Enter is pressed, before the RenderStepped loop can see the final text.
+-- Track the text as a candidate, but only mark it used when the player
+-- submits it with Enter. Typing in the helper SearchBox never consumes words.
 local trackedGameTextBox = nil
-local trackedGameTextConn = nil
+local trackedGameTextConnections = {}
+local latestGameCandidate = ""
 
 local function TrackGameTextBox(box)
-    if trackedGameTextBox == box and trackedGameTextConn then return end
-    if trackedGameTextConn then trackedGameTextConn:Disconnect() trackedGameTextConn = nil end
+    if trackedGameTextBox == box then return end
+    for _, connection in ipairs(trackedGameTextConnections) do
+        connection:Disconnect()
+    end
+    table.clear(trackedGameTextConnections)
     trackedGameTextBox = box
+    latestGameCandidate = ""
+
     if box and box:IsA("TextBox") then
-        trackedGameTextConn = box:GetPropertyChangedSignal("Text"):Connect(function()
-            if unloaded then return end
-            local typedWord = box.Text
-            typedWord = typedWord and typedWord:lower():gsub("[%s%c]+", "") or ""
-            if typedWord ~= "" and IsDictionaryWord(typedWord) and not UsedWords[typedWord] then
-                MarkWordUsed(typedWord)
+        local function rememberText()
+            local candidate = box.Text or ""
+            candidate = candidate:lower():gsub("[%s%c]+", "")
+            if candidate ~= "" and IsDictionaryWord(candidate) then
+                latestGameCandidate = candidate
             end
-        end)
+        end
+
+        rememberText()
+        table.insert(trackedGameTextConnections, box:GetPropertyChangedSignal("Text"):Connect(rememberText))
+        table.insert(trackedGameTextConnections, box.FocusLost:Connect(function(enterPressed)
+            if unloaded or not enterPressed then return end
+            local candidate = latestGameCandidate
+            if candidate ~= "" and IsDictionaryWord(candidate) then
+                MarkWordUsed(candidate)
+            end
+            latestGameCandidate = ""
+        end))
     end
 end
 
@@ -2647,16 +2687,10 @@ runConn = RunService.RenderStepped:Connect(function()
             lastWordCheck = now
         end
         local detected, censored = cachedDetected, cachedCensored
-                
-        local gameTextBox = GetGameTextBox()
-        TrackGameTextBox(gameTextBox)
-        if gameTextBox and gameTextBox.TextEditable then
-            local typedWord = gameTextBox.Text
-            typedWord = typedWord and typedWord:lower():gsub("[%s%c]+", "") or ""
-            if #typedWord > 0 and IsDictionaryWord(typedWord) and not UsedWords[typedWord] then
-                MarkWordUsed(typedWord)
-            end
-        end
+
+        -- Track only the actual game's input box. The helper SearchBox is
+        -- deliberately excluded, and a word is consumed only on Enter.
+        TrackGameTextBox(GetActualGameTextBox())
 
         if isVisible and isMyTurn and not isTyping and seconds and seconds < 1.5 then
             local char = (requiredLetter or ""):lower()
